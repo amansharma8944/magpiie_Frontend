@@ -1,7 +1,7 @@
 import React from "react";
 
 const AfterSignup = () => {
-  let currCount = 264;
+
   return (
     <>
       <div className="firstDiv" style={{ marginTop: "50px" }}>

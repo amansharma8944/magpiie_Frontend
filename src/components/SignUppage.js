@@ -84,20 +84,20 @@ export default function SignUpPage(props) {
     setStateforalert(true)
 
 
-    axios.post("http://localhost:8000/signup",dataInput)
+    axios.post(`${process.env.REACT_APP_BASE_URL}/signup`,dataInput)
     .then((res)=>{
 
       setTimeout(() => {
     
         navigate("/SignUpDone");
-      }, 3000);
+      }, 2000);
       
-      if (res.status===200) {
+    
+    })
+    .catch(err=>{
+      console.log(err);
+      throw(err)
 
-
-      
-        
-      }
     })
 
 

@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import "./clone1.css";
-// import { TypeAnimation } from 'react-type-animation';
-import MyVerticallyCenteredModal from "./SignUppage";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Clone1 = () => {
   const [noOfUser, setNoOfUser] = useState(120)
-  const [modalshow, setModalshow] = useState(false);
   const Navigate = useNavigate();
+  
+  
 
 useEffect(()=>{
-  axios.get("http://localhost:8000/")
+  axios.get(process.env.REACT_APP_BASE_URL)
   .then(data=>{
-    console.log(data.data.count)
+    console.log(data)
 
    setNoOfUser(prev=>prev+ parseInt(data.data.count))
    
     
+  })
+  .catch(err=>{
+    console.log(err)
   })
 },[])
   return (
@@ -46,9 +46,9 @@ useEffect(()=>{
             id="btn__bg"
             data-w-id="045f1d33-d1d5-1d87-381e-a1749d5cc4fd"
             onClick={() => Navigate("/Register")}
-            class="click_button"
+            className="click_button"
           >
-            <p href="#" class="link-block w-inline-block"></p>
+            <p href="#" className="link-block w-inline-block"></p>
             <h2 className="button_header">Join Waitlist!</h2>
             <h6 className="button_subheading">{noOfUser+""}+ already joined!</h6>
           </div>
